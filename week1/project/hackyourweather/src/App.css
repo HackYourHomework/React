@@ -1,0 +1,25 @@
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-header .title {
+  text-align: center;
+}
+
+.App-header .container {
+  border: 2px solid black;
+  margin: 40px;
+  padding: 0px 150px 0px 50px;
+}
+.App-header .description {
+  margin: 30px 0px 40px;
+}
+
+.App-header .main {
+  font-weight: bold;
+}
