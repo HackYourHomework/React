@@ -1,34 +1,72 @@
-import React from "react";
-import data from "./city-weather.json";
+import React, { useState, useEffect } from "react";
+let preventEarlerFetch = false;
+const MY_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 const Cityinfo = () => {
+  const [searchCity, setSearchCity] = useState("");
+  const [findCity, setFindCity] = useState({});
+
+  let apiError = "";
+
+  useEffect(() => {
+    handleFindCity();
+  }, []);
+
+  const handleFindCity = async () => {
+    try {
+      if (preventEarlerFetch) {
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${MY_KEY}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        setFindCity(data);
+      }
+    } catch (err) {
+      apiError = "can't connect to the API";
+    }
+  };
+
+  const handleSearchCity = (e) => {
+    setSearchCity(e.target.value);
+  };
+
   return (
     <div>
       <h1>Weather</h1>
-      {data.map((city, index) => {
-        return (
-          <div className="city">
-            <Name name={city.name} index={index} country={city.sys.country} />
-            <Weather weather={city.weather[0].main} index={index} />
-            <Description
-              description={city.weather[0].description}
-              index={index}
-            />
-            <Mintemp minTemp={city.main.temp_min} />
-            <Maxtemp maxTemp={city.main.temp_max} index={index} />
-            <Location
-              lonLocation={city.coord.lon}
-              index={index}
-              latLocation={city.coord.lat}
-            />
-          </div>
-        );
-      })}
+      <Search searchCity={searchCity} handleSearchCity={handleSearchCity} />
+
+      <button
+        onClick={() => {
+          preventEarlerFetch = true;
+          handleFindCity();
+        }}
+      >
+        weather
+      </button>
+      <p>{apiError}</p>
+
+      {findCity.name !== undefined && (
+        <div className="city">
+          <Name name={findCity.name} country={findCity.sys.country} />
+          <Weather weather={findCity.weather[0].main} />
+          <Description description={findCity.weather[0].description} />
+          <Mintemp minTemp={findCity.main.temp_min} />
+          <Maxtemp maxTemp={findCity.main.temp_max} />
+          <Location
+            lonLocation={findCity.coord.lon}
+            latLocation={findCity.coord.lat}
+          />
+        </div>
+      )}
+      {findCity.name === undefined && <div> No city has been searched yet</div>}
     </div>
   );
 };
 
-const Name = ({ name, index, country }) => {
+const Search = ({ searchCity, handleSearchCity }) => {
+  return <input value={searchCity} onChange={handleSearchCity} />;
+};
+
+const Name = ({ name, country }) => {
   return (
     <h2>
       {name}, {country}
@@ -36,15 +74,15 @@ const Name = ({ name, index, country }) => {
   );
 };
 
-const Weather = ({ weather, index }) => {
+const Weather = ({ weather }) => {
   return <h3>{weather}</h3>;
 };
 
-const Description = ({ description, index }) => {
+const Description = ({ description }) => {
   return <p>{description}</p>;
 };
 
-const Maxtemp = ({ maxTemp, index }) => {
+const Maxtemp = ({ maxTemp }) => {
   return <p>min temp:{maxTemp}</p>;
 };
 
