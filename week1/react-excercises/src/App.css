@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+.hobbies {
+  border-bottom: 1px solid grey;
+}
+
+.services {
+  width: 90vw;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  margin: 25px;
+  border-bottom: 1px solid grey;
+}

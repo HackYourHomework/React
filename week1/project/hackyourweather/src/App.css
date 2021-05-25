@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.content {
+  text-align: left;
+}
+
+.description {
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+
+
+
