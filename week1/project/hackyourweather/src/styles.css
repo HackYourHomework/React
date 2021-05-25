@@ -1,0 +1,27 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+.cities {
+  text-align: left;
+  margin: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cities div {
+  padding: 10px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+  background: rgb(118, 165, 196);
+  width: 50%;
+  border: 3px solid red;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.smallerLine {
+  line-height: 0.3;
+  color: red;
+}
