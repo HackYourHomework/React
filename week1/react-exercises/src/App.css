@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.guarantee-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+.guarantee-container img {
+  height: 100px;
+  width: auto;
+}
+
+.guarantee-container h2,
+h4,
+img {
+  padding: 0 15%;
+}
