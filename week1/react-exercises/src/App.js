@@ -1,6 +1,6 @@
 import './App.css';
 import HobbyList from './components/hobby-list/HobbyList';
-import Guarantee from './components/Guarantee/Guarantee';
+import Guarantee from './components/guarantee/Guarantee';
 import Counter from './components/counter/Counter';
 
 function App() {
