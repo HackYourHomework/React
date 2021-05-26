@@ -8,6 +8,7 @@ const WeatherCard = ({ data }) => {
   const minTemp = kelvinToCelsius(data.main.temp_min);
   const maxTemp = kelvinToCelsius(data.main.temp_max);
   const { lat, lon } = data.coord;
+
   return (
     <div className="container">
       <h1>

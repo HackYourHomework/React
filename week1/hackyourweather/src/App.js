@@ -4,12 +4,12 @@ import weatherData from './city-weather.json';
 import WeatherCard from './components/weather-card/WeatherCard';
 
 const App = () => {
-  const [state] = useState(weatherData);
+  const [cities] = useState(weatherData);
 
   return (
     <div className="App">
       <h1>Weather</h1>
-      {state.map((city) => (
+      {cities.map((city) => (
         <WeatherCard data={city} key={city.id} />
       ))}
     </div>
