@@ -1,0 +1,28 @@
+.container {
+  border: 0.1rem solid black;
+  width: 30rem;
+  margin: 3rem auto;
+  text-align: left;
+  padding-left: 2rem;
+}
+
+h1 {
+  font-weight: 500;
+}
+
+p {
+  font-weight: 600;
+}
+
+.status {
+  margin-bottom: 2rem;
+}
+
+.status h2,
+.status p {
+  margin: 0.25rem 0;
+}
+
+.status h2 {
+  font-weight: 800;
+}
