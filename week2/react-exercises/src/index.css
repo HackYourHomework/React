@@ -15,9 +15,18 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  min-height: 20rem;
+  max-width: 60rem;
+  margin: 1.2rem auto;
+  padding: 1.2rem;
   overflow: auto;
+  background-color: lightblue;
+  border: 1px solid steelblue;
   border-radius: 1rem;
+}
+h2 {
+  text-align: center;
+  color: rgb(97, 3, 55);
 }
 
 .profile {
@@ -27,28 +36,23 @@ body {
   align-items: center;
   margin: 1rem;
   padding: 1rem;
-  background-color: #fff;
-  font-size: 1.5rem;
-  overflow: hidden;
-  border: 0.1rem solid rgb(187, 156, 136);
-  border-radius: 1rem 1rem;
+  border-radius: 1rem;
 }
-
 .btn {
   display: inline-block;
-  background: rgb(211, 127, 0);
-  padding: 0.5rem 1rem;
-  margin: 0.7rem;
-  font-size: 1.2rem;
-  color: #fff;
   text-decoration: none;
+  font-size: 1.5rem;
+  font-family: inherit;
+  color: #fff;
+  background: #000;
+  margin: 0.5rem auto;
+  padding: 0.7rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   cursor: pointer;
 }
 img {
   width: 10rem;
-
   margin: 1rem;
   border-radius: 1rem;
 }

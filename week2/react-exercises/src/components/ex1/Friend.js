@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import FriendProfile from "./FriendProfile";
 
 const Friend = () => {
@@ -16,7 +16,7 @@ const Friend = () => {
 
   return (
     <div>
-      <Button getFriend={getFriend} />
+      <Button text={"Get A friend"} onClick={getFriend} />
       {friend && <FriendProfile friend={friend} />}
     </div>
   );

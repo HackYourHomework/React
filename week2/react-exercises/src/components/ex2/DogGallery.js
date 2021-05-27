@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "./Button";
+import Button from "../Button";
 import DogPhoto from "./DogPhoto";
 
 const DogGallery = () => {
@@ -15,12 +15,12 @@ const DogGallery = () => {
   };
   return (
     <>
-      <Button getDogPhoto={getDogPhoto} />
+      <Button text={"Get a dog!"} onClick={getDogPhoto} />
       <div className="profile">
         {dogPhotos.length ? (
           dogPhotos.map((photo) => <DogPhoto photo={photo} />)
         ) : (
-          <p>Get your first dog by clicking the button!</p>
+          <h6>Get your first dog by clicking the button!</h6>
         )}
       </div>
     </>
