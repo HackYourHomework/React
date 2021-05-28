@@ -30,7 +30,7 @@ function City(props) {
   );
 }
 
-function Description(props) {
+function Description({ main, description }) {
   const { main, description } = props;
   return (
     <div>
