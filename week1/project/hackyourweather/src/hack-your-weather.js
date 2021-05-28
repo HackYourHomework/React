@@ -9,15 +9,14 @@ function City() {
       data.map((city) => {
         return (
           <div className="city">
-            <Name name={city.name} country={city.sys.country} />
-            <Weather weather={city.weather[0].main} />
-            <Description description={city.weather[0].description}/>
-            <Mintemp minTemp={city.main.temp_min} />
-            <Maxtemp maxTemp={city.main.temp_max}  />
-            <Location
-              lon={city.coord.lon}      
-              lat={city.coord.lat}
-            />
+            <h3> name: {city.name} - country: {city.sys.country}</h3>
+            <p> weather: {city.weather[0].main}</p>
+            <p> description: {city.weather[0].description}</p>
+            <p> minTemp: {(city.main.temp_min -272.15).toFixed(2)}</p>
+            <p> maxTemp: {(city.main.temp_max -272.15).toFixed(2)}</p>
+            <p>
+              lon: {city.coord.lon} - lat: {city.coord.lat}
+              </p>
           </div>
         );
       })
@@ -26,35 +25,5 @@ function City() {
   );
 };
 
-
-function Name ({ name,country }) {
-  return (
-    <h2>
-      {name}, {country}
-    </h2>
-  );
-};
-
-function Weather ({ weather }) {
-  return <h2>{weather}</h2>;
-};
-
-function Description ({ description }) {
-  return <p>{description}</p>;
-};
-
-function Mintemp ({ minTemp }) {
-  return <p>maximum temp:{minTemp}</p>;
-};
-
-function Maxtemp ({ maxTemp }) {
-  return <p>minimum temp:{maxTemp}</p>;
-};
-
-function Location ({ lon,lat }){
-  return (
-    <p>Location : {lon},{lat}</p>
-  );
-};
 
 export default City;
