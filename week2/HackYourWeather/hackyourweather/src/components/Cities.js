@@ -4,13 +4,14 @@ import Search from "./Search";
 
 const Cities = () => {
   const [search, setSearch] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [cityWeatherMap, setCityWeatherMap] = useState();
 
   useEffect(() => {
     if (search) {
       (async () => {
+        setLoading(true);
         try {
           const resp = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${search}&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
@@ -38,8 +39,10 @@ const Cities = () => {
         <h1>{error}</h1>
       ) : loading ? (
         <h1>loading ...</h1>
+      ) : cityWeatherMap ? (
+        <City key={cityWeatherMap.id} city={cityWeatherMap} />
       ) : (
-        cityWeatherMap && <City key={cityWeatherMap.id} city={cityWeatherMap} />
+        <h6>Search for your city</h6>
       )}
     </div>
   );

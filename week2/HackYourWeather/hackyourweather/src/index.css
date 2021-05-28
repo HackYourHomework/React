@@ -24,11 +24,13 @@ code {
   border: 1px solid steelblue;
   border-radius: 1rem;
 }
-h1 {
+h1,
+h6 {
   text-align: center;
 }
 
 .city {
+  text-align: left;
   line-height: 1rem;
   background: #f4f4f4;
   margin: 0.7rem;
