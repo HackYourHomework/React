@@ -8,17 +8,17 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <Header title={"Extreme Hobbies"} />
+        <Header title="Extreme Hobbies" />
         <HobbyList hobbies={hobbies} />
       </div>
 
       <div className="container">
-        <Header title={"Perfect customer service"} />
+        <Header title="Perfect customer service" />
         <GuaranteeList servicesList={servicesList} />
       </div>
 
       <div className="container">
-        <Header title={"Counter"} />
+        <Header title="Counter" />
         <Counter />
       </div>
     </>

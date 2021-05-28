@@ -5,7 +5,7 @@ import cities from "./project-starter-files/city-weather.json";
 const App = () => {
   return (
     <div className="container">
-      <Header title={"Weather"} />
+      <Header title="Weather" />
       <Cities cities={cities} />
     </div>
   );
