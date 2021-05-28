@@ -4,7 +4,7 @@ import cityData from './city-weather.json';
 function MainWeather() {
   return (
     <div>
-      {cityData.map((data) => {
+      {cityData.map(({ name, sys, weather, main, coord }) =>  {
         return (
           <div className="box" key={data.id}>
             <City city={data.name} country={data.sys.country} />
