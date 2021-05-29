@@ -6,32 +6,32 @@ const RandomJoke = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [joke, setJoke] = useState();
-  useEffect(() => {
-    if (!joke) {
-      (async () => {
-        try {
-          const resp = await fetch(
-            "https://official-joke-api.appspot.com/random_joke"
-          );
-          const data = await resp.json();
-          if (!resp.ok) {
-            throw new Error(data.message);
-          }
-          setLoading(false);
-          setError(false);
-          setJoke(data);
-        } catch (err) {
-          setLoading(false);
-          setError(err.message);
-          setJoke();
-          console.log(err);
-        }
-      })();
+  const getJoke = async () => {
+    try {
+      const resp = await fetch(
+        "https://official-joke-api.appspot.com/random_joke"
+      );
+      const data = await resp.json();
+      if (!resp.ok) {
+        throw new Error(data.message);
+      }
+      setLoading(false);
+      setError(false);
+      setJoke(data);
+    } catch (err) {
+      setLoading(false);
+      setError(err.message);
+      setJoke();
+      console.log(err);
     }
-  }, [joke]);
+  };
+  useEffect(() => {
+    getJoke();
+  }, []);
+
   return (
     <div>
-      <Button text="Get a new joke!" onClick={() => setJoke()} />
+      <Button text="Get a new joke!" onClick={() => getJoke()} />
       {error ? (
         <h1>{error}</h1>
       ) : loading ? (
