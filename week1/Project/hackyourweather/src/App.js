@@ -9,14 +9,7 @@ function App() {
       {cityWeather.map((city) => (
         <City
           key={city.weather[0].id}
-          name={city.name}
-          country={city.sys.country}
-          weatherMain={city.weather[0].main}
-          weatherDesc={city.weather[0].description}
-          maxTemp={city.main.temp_max}
-          minTemp={city.main.temp_min}
-          longitude={city.coord.lon}
-          latitude={city.coord.lat}
+          city={city}
         />
       ))}
     </div>
