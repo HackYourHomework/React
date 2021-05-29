@@ -1,5 +1,5 @@
 import React from 'react';
-import Hobbies from './Hobbies';
+import Hobby from './Hobby';
 
 const HobbyList = () => {
   const hobbies = [
@@ -13,7 +13,7 @@ const HobbyList = () => {
     <div>
       <ul>
         {hobbies.map((hobby) => (
-          <Hobbies hobby={hobby} key={hobby} />
+          <Hobby hobby={hobby} key={hobby} />
         ))}
       </ul>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Hobbies = ({ hobby }) => {
+const Hobby = ({ hobby }) => {
   return <li>{hobby}</li>;
 };
 
-export default Hobbies;
+export default Hobby;
