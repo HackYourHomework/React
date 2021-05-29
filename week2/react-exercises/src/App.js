@@ -8,15 +8,15 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <Header title={"New friend on demand"} />
+        <Header title="New friend on demand" />
         <Friend />
       </div>
       <div className="container">
-        <Header title={"Dog photo gallery"} />
+        <Header title="Dog photo gallery" />
         <Dog />
       </div>
       <div className="container">
-        <Header title={"Random Joke Generator"} />
+        <Header title="Random Joke Generator" />
         <RandomJoke />
       </div>
     </>

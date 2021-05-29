@@ -27,7 +27,7 @@ const Friend = () => {
 
   return (
     <div>
-      <Button text={"Get A friend!"} onClick={getFriend} />
+      <Button text="Get A friend!" onClick={getFriend} />
       {error ? (
         <h1>{error}</h1>
       ) : loading ? (

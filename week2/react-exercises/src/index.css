@@ -15,8 +15,9 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 20rem;
   max-width: 60rem;
+  height: 28rem;
+  overflow-y: scroll;
   margin: 1.2rem auto;
   padding: 1.2rem;
   overflow: auto;
@@ -24,6 +25,13 @@ body {
   border: 1px solid steelblue;
   border-radius: 1rem;
 }
+.container:first-child {
+  height: 18rem;
+}
+.container:last-child {
+  height: 14rem;
+}
+
 h2 {
   text-align: center;
   color: rgb(97, 3, 55);
@@ -34,8 +42,8 @@ h2 {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: 1rem;
 }
 .btn {
@@ -52,7 +60,7 @@ h2 {
   cursor: pointer;
 }
 img {
-  width: 10rem;
-  margin: 1rem;
+  height: 15rem;
+  margin: 0.5rem;
   border-radius: 1rem;
 }

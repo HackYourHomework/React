@@ -31,7 +31,7 @@ const RandomJoke = () => {
   }, [joke]);
   return (
     <div>
-      <Button text={"Get a new joke!"} onClick={() => setJoke()} />
+      <Button text="Get a new joke!" onClick={() => setJoke()} />
       {error ? (
         <h1>{error}</h1>
       ) : loading ? (

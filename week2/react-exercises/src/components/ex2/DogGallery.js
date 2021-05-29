@@ -16,7 +16,7 @@ const DogGallery = () => {
       }
       setLoading(false);
       setError(false);
-      setDogPhotos([...dogPhotos, data.message]);
+      setDogPhotos([data.message, ...dogPhotos]);
     } catch (err) {
       setLoading(false);
       setError(err.message);
@@ -27,15 +27,15 @@ const DogGallery = () => {
 
   return (
     <>
-      <Button text={"Get a dog!"} onClick={getDogPhoto} />
+      <Button text="Get a dog!" onClick={getDogPhoto} />
       {error ? (
         <h1>{error}</h1>
       ) : loading ? (
         <h1>loading ...</h1>
       ) : dogPhotos.length ? (
         <div className="profile">
-          {dogPhotos.map((photo) => (
-            <DogPhoto photo={photo} />
+          {dogPhotos.map((photo, index) => (
+            <DogPhoto key={index} photo={photo} />
           ))}
         </div>
       ) : (
