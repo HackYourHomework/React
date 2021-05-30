@@ -41,8 +41,8 @@ const Cities = () => {
     <>
       <h1>Weather</h1>
       <Search getCityWeather={getCityWeather} />
-      {error && <h1>{error}</h1>}
-      {loading && <h1>loading ...</h1>}
+      {error && <h2>{error}</h2>}
+      {loading && <h2>loading ...</h2>}
       {citiesWeatherMap &&
         citiesWeatherMap.map((cityWeatherMap) => (
           <City

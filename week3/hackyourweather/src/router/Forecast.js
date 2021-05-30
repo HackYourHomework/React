@@ -33,18 +33,18 @@ const Forecast = () => {
     })();
   }, [cityId]);
   return (
-    <>
+    <div className="forecast">
       <h1>Forecast</h1>
       <Link to="/">
         <button className="btn" onClick={() => history.goBack()}>
           Weather
         </button>
       </Link>
-      {error && <h1>{error}</h1>}
-      {loading && <h1>loading ...</h1>}
-      {cityName && <h1>{cityName}</h1>}
+      {error && <h2>{error}</h2>}
+      {loading && <h2>loading ...</h2>}
+      {cityName && <h2>{cityName}</h2>}
       {cityForecast && <Chart cityForecast={cityForecast} />}
-    </>
+    </div>
   );
 };
 

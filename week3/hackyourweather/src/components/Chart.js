@@ -21,8 +21,8 @@ const Chart = ({ cityForecast }) => {
     >
       <Area type="monotone" fill="#b19cd9" dataKey="dayTemp" stroke="#8884d8" />
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="dayDate" />
-      <YAxis />
+      <XAxis stroke="black" dataKey="dayDate" />
+      <YAxis stroke="black" />
       <Tooltip />
     </AreaChart>
   );
