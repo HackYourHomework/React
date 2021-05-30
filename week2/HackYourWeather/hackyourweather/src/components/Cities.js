@@ -14,7 +14,7 @@ const Cities = () => {
         setLoading(true);
         try {
           const resp = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${search}&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`
+            `https://api.openweathermap.org/data/2.5/weather?q=${search}&APPID=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}&units=metric`
           );
           const data = await resp.json();
           if (!resp.ok) {
