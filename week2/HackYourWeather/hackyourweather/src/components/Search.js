@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = ({ get }) => {
+const Search = ({ getCityWeatherMap }) => {
   const [cityName, setCityName] = useState("");
 
   return (
@@ -12,7 +12,11 @@ const Search = ({ get }) => {
         value={cityName}
         onChange={(e) => setCityName(e.target.value)}
       />
-      <button className="btn" type="button" onClick={() => get(cityName)}>
+      <button
+        className="btn"
+        type="button"
+        onClick={() => getCityWeatherMap(cityName)}
+      >
         Search
       </button>
     </div>

@@ -31,7 +31,7 @@ const Cities = () => {
 
   return (
     <div>
-      <Search get={getCityWeatherMap} />
+      <Search getCityWeatherMap={getCityWeatherMap} />
       {notification && <h1>{notification}</h1>}
       {cityWeatherMap && <City key={cityWeatherMap.id} city={cityWeatherMap} />}
     </div>
