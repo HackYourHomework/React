@@ -1,0 +1,11 @@
+.container {
+  line-height: 2rem;
+}
+
+.container button {
+  margin-top: 2rem;
+}
+
+.wrapper {
+  min-height: 25vh;
+}
