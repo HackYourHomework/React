@@ -26,22 +26,21 @@ const DogGallery = () => {
   };
 
   return (
-    <>
+    <div>
       <Button text="Get a dog!" onClick={getDogPhoto} />
-      {error ? (
-        <h1>{error}</h1>
-      ) : loading ? (
-        <h1>loading ...</h1>
-      ) : dogPhotos.length ? (
-        <div className="profile">
+      {error && <h1>{error}</h1>}
+      {loading && <h1>loading...</h1>}
+      {dogPhotos && (
+        <article className="profile">
+          {!dogPhotos.length && (
+            <h5>Get your first dog by clicking the button!</h5>
+          )}
           {dogPhotos.map((photo, index) => (
             <DogPhoto key={index} photo={photo} />
           ))}
-        </div>
-      ) : (
-        <h5>Get your first dog by clicking the button!</h5>
+        </article>
       )}
-    </>
+    </div>
   );
 };
 

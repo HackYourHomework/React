@@ -32,13 +32,9 @@ const RandomJoke = () => {
   return (
     <div>
       <Button text="Get a new joke!" onClick={() => getJoke()} />
-      {error ? (
-        <h1>{error}</h1>
-      ) : loading ? (
-        <h1>loading ...</h1>
-      ) : (
-        joke && <Joke props={joke} />
-      )}
+      {error && <h1>{error}</h1>}
+      {loading && <h1>loading ...</h1>}
+      {joke && <Joke props={joke} />}
     </div>
   );
 };

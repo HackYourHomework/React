@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Search = ({ setSearch }) => {
+const Search = ({ get }) => {
   const [cityName, setCityName] = useState("");
 
   return (
@@ -12,7 +12,7 @@ const Search = ({ setSearch }) => {
         value={cityName}
         onChange={(e) => setCityName(e.target.value)}
       />
-      <button className="btn" type="button" onClick={() => setSearch(cityName)}>
+      <button className="btn" type="button" onClick={() => get(cityName)}>
         Search
       </button>
     </div>

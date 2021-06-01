@@ -1,6 +1,6 @@
 import React from "react";
 import Friend from "./components/ex1/Friend";
-import Dog from "./components/ex2/DogGallery";
+import DogGallery from "./components/ex2/DogGallery";
 import RandomJoke from "./components/ex3/RandomJoke";
 
 const App = () => {
@@ -12,7 +12,7 @@ const App = () => {
       </div>
       <div className="container">
         <h2>Dog photo gallery</h2>
-        <Dog />
+        <DogGallery />
       </div>
       <div className="container">
         <h2>Random Joke Generator</h2>

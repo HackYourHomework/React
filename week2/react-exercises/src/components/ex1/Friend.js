@@ -28,15 +28,10 @@ const Friend = () => {
   return (
     <div>
       <Button text="Get A friend!" onClick={getFriend} />
-      {error ? (
-        <h1>{error}</h1>
-      ) : loading ? (
-        <h1>loading ...</h1>
-      ) : friend ? (
-        <FriendProfile friend={friend} />
-      ) : (
-        <h5>Get your first friend by clicking the button!</h5>
-      )}
+      {error && <h1>{error}</h1>}
+      {loading && <h1>loading...</h1>}
+      {!friend && <h5>Get your first friend by clicking the button!</h5>}
+      {friend && <FriendProfile friend={friend} />}
     </div>
   );
 };

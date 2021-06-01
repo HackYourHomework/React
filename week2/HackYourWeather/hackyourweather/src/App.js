@@ -1,10 +1,9 @@
-import Header from "./components/Header";
 import Cities from "./components/Cities";
 
 const App = () => {
   return (
     <div className="container">
-      <Header title="Weather" />
+      <h1>Weather</h1>
       <Cities />
     </div>
   );
