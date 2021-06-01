@@ -1,14 +1,10 @@
-import City from "./hack-your-weather";
-import './App.css';
+import Weather from "./Hack-your-weather";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-
-      <City />
-      
-      </header>
+      <Weather />
     </div>
   );
 }

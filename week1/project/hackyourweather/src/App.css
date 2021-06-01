@@ -1,3 +1,13 @@
+.city-weather{
+  padding-left: 50px;
+  margin: 10px auto;
+  width: 50%;
+  border: 1px solid;
+}
+ h2,h3{
+   text-align: left;
+ }
+
 .App {
   text-align: center;
 }
