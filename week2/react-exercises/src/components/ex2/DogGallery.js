@@ -3,23 +3,25 @@ import Button from "../Button";
 import DogPhoto from "./DogPhoto";
 
 const DogGallery = () => {
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [notification, setNotification] = useState(
+    `Get your first dog by clicking the button!`
+  );
+
   const [dogPhotos, setDogPhotos] = useState([]);
+
   const getDogPhoto = async () => {
-    setLoading(true);
     try {
+      setNotification(`Loading...`);
       const resp = await fetch("https://dog.ceo/api/breeds/image/random");
       const data = await resp.json();
       if (!resp.ok) {
         throw new Error(data.message);
+      } else {
+        setNotification(``);
+        setDogPhotos([data.message, ...dogPhotos]);
       }
-      setLoading(false);
-      setError(false);
-      setDogPhotos([data.message, ...dogPhotos]);
     } catch (err) {
-      setLoading(false);
-      setError(err.message);
+      setNotification(err.message);
       setDogPhotos([...dogPhotos]);
       console.log(err);
     }
@@ -28,13 +30,9 @@ const DogGallery = () => {
   return (
     <div>
       <Button text="Get a dog!" onClick={getDogPhoto} />
-      {error && <h1>{error}</h1>}
-      {loading && <h1>loading...</h1>}
+      {notification && <h4>{notification}</h4>}
       {dogPhotos && (
         <article className="profile">
-          {!dogPhotos.length && (
-            <h5>Get your first dog by clicking the button!</h5>
-          )}
           {dogPhotos.map((photo, index) => (
             <DogPhoto key={index} photo={photo} />
           ))}

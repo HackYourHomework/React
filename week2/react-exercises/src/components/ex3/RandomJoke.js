@@ -3,24 +3,24 @@ import Joke from "./Joke";
 import Button from "../Button";
 
 const RandomJoke = () => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [notification, setNotification] = useState(``);
   const [joke, setJoke] = useState();
+
   const getJoke = async () => {
     try {
+      setNotification(`Loading...`);
       const resp = await fetch(
         "https://official-joke-api.appspot.com/random_joke"
       );
       const data = await resp.json();
       if (!resp.ok) {
         throw new Error(data.message);
+      } else {
+        setNotification(``);
+        setJoke(data);
       }
-      setLoading(false);
-      setError(false);
-      setJoke(data);
     } catch (err) {
-      setLoading(false);
-      setError(err.message);
+      setNotification(err.message);
       setJoke();
       console.log(err);
     }
@@ -32,8 +32,7 @@ const RandomJoke = () => {
   return (
     <div>
       <Button text="Get a new joke!" onClick={() => getJoke()} />
-      {error && <h1>{error}</h1>}
-      {loading && <h1>loading ...</h1>}
+      {notification && <h1>{notification}</h1>}
       {joke && <Joke props={joke} />}
     </div>
   );
