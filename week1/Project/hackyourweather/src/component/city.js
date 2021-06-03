@@ -1,15 +1,7 @@
 import React from "react";
 
 const City = ({
-  key,
-  name,
-  country,
-  weatherMain,
-  weatherDesc,
-  maxTemp,
-  minTemp,
-  longitude,
-  latitude,
+   city
 }) => {
   return (
     <div className="container">
