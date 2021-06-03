@@ -1,15 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState } from 'react';
-import cityData from './city-weather.json';
-import City from './components/City';
-import Location from './components/Location';
-import Temperature from './components/Temperature';
-import Description from './components/Description';
-import Search from './components/Search';
+import CityBox from './components/CityBox';
 
 function App() {
   const [city, setCity] = useState('');
+  const [inputCity, setInputCity] = useState();
   const [loading, setLoading] = useState(false);
   const [errorVariable, setError] = useState(false);
 
@@ -28,11 +23,28 @@ function App() {
     }
   };
   return (
-    <div>
-      <Search onClick={getCity}></Search>
+    <div style={{ textAlign: 'center' }}>
+      <h1>Weather</h1>
+      <input
+        name="name"
+        type="text"
+        onChange={(e) => {
+          setInputCity(e.target.value);
+        }}
+        placeholder="Search City"
+      />
+      <button
+        type="submit"
+        onClick={() => {
+          getCity({ inputCity });
+        }}
+      >
+        Search
+      </button>
+      <hr />
       {loading && <div>Loading...</div>}
       {errorVariable && <div>{errorVariable}</div>}
-      {!errorVariable && city && <City city={city} />}
+      {!errorVariable && city && <CityBox cityData={city} />}
     </div>
     // <div>
     //   {cityData.map((data) => {

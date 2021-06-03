@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Location = ({ props }) => {
-  const { lon, lat } = props;
+const Location = ({ cityData }) => {
+  const { lon, lat } = cityData.coord;
   return (
     <div>
       <p>
-        location: <span>{lon}, </span>
+        location: <span>{lon} , </span>
         <span>{lat}</span>
       </p>
     </div>

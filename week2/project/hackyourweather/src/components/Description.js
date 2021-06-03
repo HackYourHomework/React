@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Description = ({ props }) => {
-  const { main, description } = props;
+const Description = ({ cityData }) => {
+  const { main, description } = cityData.weather[0];
   return (
     <div>
-      <p>{main}</p>
+      <h3>{main}</h3>
       <p>{description}</p>
     </div>
   );
