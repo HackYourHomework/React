@@ -10,8 +10,8 @@ const HobbyList = () => {
   ];
   return (
     <ul>
-      {hobbies.map((hobby) => (
-        <Hobbies key={hobbies.indexOf(hobby)} props={hobby} />
+      {hobbies.map((hobby, index) => (
+        <Hobbies key={index} props={hobby} />
       ))}
     </ul>
   );
