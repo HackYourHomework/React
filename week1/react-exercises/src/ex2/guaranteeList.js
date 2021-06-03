@@ -31,12 +31,10 @@ const GuaranteeItem = () => {
 
   return (
     <div>
-      {lists.map((list) => (
+      {guaranteeLists.map((guarantee) => (
         <Guarantee
-          key={list.id}
-          img={list.img}
-          title={list.title}
-          description={list.description}
+          key={guarantee.id}
+          guarantee={guarantee}
         />
       ))}
     </div>
