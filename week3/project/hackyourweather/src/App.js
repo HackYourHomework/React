@@ -1,16 +1,21 @@
 import './App.css';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext, createContext } from 'react';
+const CitiesContext = createContext();
+function CitiesProvider(props) {
+  const [citiesData, setCitiesData] = useState([]);
+  return (
+    <CitiesContext.Provider value={[citiesData, setCitiesData]}>
+      {props.children}
+    </CitiesContext.Provider>
+  );
+}
 
-function City({ cityData, citiesData }) {
-  const [newCities, setNewCities] = useState(citiesData);
+function City({ cityData }) {
+  const [citiesData, setCitiesData] = useContext(CitiesContext);
   function removeItem(item) {
-    setNewCities((oldItems) => {
-      const newArr = [...oldItems.filter((i) => i !== item)];
-      console.log('newArr', newArr);
-      return newArr;
+    setCitiesData((oldItems) => {
+      return [...oldItems.filter((i) => i !== item)];
     });
-
-    return <CityList citiesData={newCities} />;
   }
   return (
     <div
@@ -44,22 +49,24 @@ function City({ cityData, citiesData }) {
     </div>
   );
 }
-function CityList({ citiesData }) {
-  console.log('citiesData', citiesData);
-  return (
-    <div style={{ textAlign: 'center' }}>
-      {citiesData.map((city) => {
-        return (
-          <div key={city.id}>
-            <City cityData={city} citiesData={citiesData} />
-          </div>
-        );
-      })}
-    </div>
-  );
+function CityList() {
+  const [citiesData, setCitiesData] = useContext(CitiesContext);
+  if (citiesData.length > 0) {
+    return (
+      <div style={{ textAlign: 'center' }}>
+        {citiesData.map((city) => {
+          return (
+            <div key={city.id}>
+              <City cityData={city} />
+            </div>
+          );
+        })}
+      </div>
+    );
+  } else return <div></div>;
 }
 function SearchCity() {
-  let [citiesData, setCitiesData] = useState([]);
+  const [citiesData, setCitiesData] = useContext(CitiesContext);
   let cityRef = useRef();
   let [err, setErr] = useState('');
 
@@ -91,17 +98,18 @@ function SearchCity() {
       <h3>{err}</h3>
       <input ref={cityRef} type="text" placeholder="Search City" />
       <button onClick={submitButton}>Search</button>
-
-      {citiesData.length > 0 && <CityList citiesData={citiesData} />}
     </div>
   );
 }
 
 function App() {
   return (
-    <div className="App">
-      <SearchCity />
-    </div>
+    <CitiesProvider>
+      <div className="App">
+        <SearchCity />
+        <CityList />
+      </div>
+    </CitiesProvider>
   );
 }
 
