@@ -17,6 +17,9 @@
   --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+::-webkit-scrollbar {
+  display: none;
+}
 
 * {
   margin: 0;
@@ -31,6 +34,8 @@ body {
 
 .container {
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   align-items: center;
