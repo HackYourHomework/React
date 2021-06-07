@@ -1,5 +1,20 @@
 import './App.css';
 import { useState, useRef, useEffect, useContext, createContext } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useParams,
+} from 'react-router-dom';
+import {
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from 'recharts';
+
 const CitiesContext = createContext();
 function CitiesProvider(props) {
   const [citiesData, setCitiesData] = useState([]);
@@ -21,8 +36,7 @@ function City({ cityData }) {
     <div
       style={{
         border: '1px solid black',
-        width: '40%',
-        margin: '30px',
+        margin: '10px',
         textAlign: 'left',
         paddingLeft: '30px',
       }}
@@ -46,6 +60,11 @@ function City({ cityData }) {
       <p style={{ marginBottom: '10px' }}>
         location: {cityData.coord.lon}, {cityData.coord.lat}
       </p>
+      <Link to={`/${cityData.id}`}>
+        <p style={{ marginBottom: '10px' }}>
+          <b>5 day forecast</b>
+        </p>
+      </Link>
     </div>
   );
 }
@@ -53,7 +72,12 @@ function CityList() {
   const [citiesData, setCitiesData] = useContext(CitiesContext);
   if (citiesData.length > 0) {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div
+        style={{
+          margin: 'auto',
+          width: '50%',
+        }}
+      >
         {citiesData.map((city) => {
           return (
             <div key={city.id}>
@@ -101,14 +125,90 @@ function SearchCity() {
     </div>
   );
 }
+function CityPage() {
+  const { cityId } = useParams();
+  const [forecast, setForecast] = useState({});
 
+  useEffect(() => {
+    fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setForecast(data);
+      });
+  }, []);
+
+  let name = '';
+  let country = '';
+  let forecastData = [];
+  if (forecast.list) {
+    forecast.list.forEach((el) => {
+      const time = el.dt_txt;
+      const temp = (el.main.temp - 273.15).toFixed(2);
+      const point = { time: time, temp: temp };
+      forecastData.push(point);
+    });
+  }
+  if (forecast.city) {
+    name = forecast.city.name;
+    country = forecast.city.country;
+  }
+
+  const renderLineChart = (
+    <LineChart
+      width={600}
+      height={300}
+      data={forecastData}
+      margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+    >
+      <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <XAxis dataKey="time" />
+      <YAxis />
+      <Tooltip />
+    </LineChart>
+  );
+
+  return (
+    <div
+      style={{
+        margin: 'auto',
+        width: '50%',
+      }}
+    >
+      <h3>5 day forecast</h3>
+      <h1>
+        {name}, {country}
+      </h1>
+      {renderLineChart}
+      <Link to="/">
+        <button>Go Back</button>
+      </Link>
+    </div>
+  );
+}
+function Home() {
+  return (
+    <div>
+      <SearchCity />
+      <CityList />
+    </div>
+  );
+}
 function App() {
   return (
     <CitiesProvider>
-      <div className="App">
-        <SearchCity />
-        <CityList />
-      </div>
+      <Router>
+        <div className="App">
+          <Route path="/" exact component={Home} />
+          <Route path="/:cityId" exact component={CityPage} />
+        </div>
+      </Router>
     </CitiesProvider>
   );
 }
