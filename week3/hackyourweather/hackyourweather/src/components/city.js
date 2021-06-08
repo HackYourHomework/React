@@ -57,18 +57,18 @@ return (
 
     <div>
     {cities.length === 0 && <div> No city has been searched yet .... </div>}
-    {cities.length !== 0 && cities.map((item) => {
+    {cities.length !== 0 && cities.map((city) => {
         return <div className="city-weather">
-        <h2> {item.name}  </h2>
-        <h2> {item.weather[0].main} </h2>
-        <h3> {item.weather[0].description}</h3>
+        <h2> {city.name}  </h2>
+        <h2> {city.weather[0].main} </h2>
+        <h3> {city.weather[0].description}</h3>
         <h3> Min Temp : {(city.main.temp_min -272.15).toFixed(2)} </h3>
         <h3> Max Temp : {(city.main.temp_max -272.15).toFixed(2)} </h3>
         <h3> Location : {city.coord.lon} - {city.coord.lat} </h3>
-        <Link to={`/${item.id}`}>
+        <Link to={`/${city.id}`}>
         <p style={{ color: "yellow" }}>5 day forecast</p>
         </Link>
-        <button className="dlt-btn" onClick={() => deleteCity(item)}>X</button>
+        <button className="dlt-btn" onClick={() => deleteCity(city)}>X</button>
         </div> ;
         })}
     </div>
