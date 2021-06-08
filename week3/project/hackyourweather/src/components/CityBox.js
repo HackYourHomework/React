@@ -4,7 +4,7 @@ import Location from './Location';
 import Temperature from './Temperature';
 import Description from './Description';
 
-const CityBox = ({ cityData }) => {
+const CityBox = ({ cityData, removeCity }) => {
   return (
     <div
       style={{
@@ -16,6 +16,7 @@ const CityBox = ({ cityData }) => {
         marginTop: '10px',
       }}
     >
+      <button onClick={removeCity.bind(this)}>X</button>
       <City cityData={cityData} />
       <Description cityData={cityData} />
       <Temperature cityData={cityData} />

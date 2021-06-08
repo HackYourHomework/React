@@ -35,6 +35,10 @@ function App() {
       setLoading(false);
     }
   };
+  const removeCity = (closeButton) => {
+    var parent = closeButton.target.parentNode;
+    parent.style.display = 'none';
+  };
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -60,7 +64,9 @@ function App() {
       {errorVariable && <div>{errorVariable}</div>}
       {!errorVariable &&
         cities &&
-        cities.map((city) => <CityBox key={city.id} cityData={city} />)}
+        cities.map((city) => (
+          <CityBox key={city.id} cityData={city} removeCity={removeCity} />
+        ))}
     </div>
   );
 }
