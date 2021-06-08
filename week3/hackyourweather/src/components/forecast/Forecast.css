@@ -1,0 +1,18 @@
+.forecast_title {
+  background-color: gray;
+  padding: 1rem;
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.forecast_city {
+  float: left;
+  margin-left: 4rem;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.back_btn {
+  position: absolute;
+  bottom: 3rem;
+}

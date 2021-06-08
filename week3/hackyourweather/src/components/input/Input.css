@@ -1,0 +1,11 @@
+input {
+  border-radius: 0.7rem;
+  height: 2rem;
+  width: 16rem;
+  padding-left: 2rem;
+  background: url(../../assets/search_icon.png) no-repeat;
+  background-size: 1.2rem;
+  background-position-y: center;
+  background-position-x: 0.5rem;
+  outline: none;
+}
