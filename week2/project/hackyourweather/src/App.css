@@ -1,0 +1,9 @@
+.App {
+  text-align: center;
+}
+
+.Weather {
+  border: 2px solid black;
+  margin-top: 2vh;
+  padding: 2em;
+}
