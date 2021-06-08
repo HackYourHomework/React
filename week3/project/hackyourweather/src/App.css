@@ -1,0 +1,94 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.App {
+  text-align: center;
+}
+
+.Weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.CityWeather {
+  border: 2px solid black;
+  margin-top: 2vh;
+  padding: 2em;
+  text-align: left;
+  margin: 2rem auto 0;
+  width: 300px;
+}
+
+.CityWeather .close {
+  width: 30px;
+  height: 30px;
+  float: right;
+  margin-top: -16rem;
+  margin-right: -1rem;
+  border: 2px solid #000;
+  border-radius: 50px;
+  font-size: 1rem;
+  line-height: 1rem;
+  cursor: pointer;
+}
+
+.CityWeather .close:hover,
+.CityWeather .close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+.CityWeather .Link {
+  font-size: 2rem;
+  color: #000;
+  text-decoration: none;
+  display: flex;
+}
+.CityWeather .Link:hover {
+  border-bottom: 5px solid black;
+  width: 75%;
+}
+.CityWeather .Link .link-icon {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  background: #f8f8ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+
+  /*  Remove overflow to see how it works　:) */
+  overflow: hidden;
+}
+
+.forecast h1 {
+  background-color: #d6dbdf;
+  width: 320px;
+  padding: 30px 60px;
+  margin: 25px auto 10px;
+  text-align: center;
+}
+.forecast h2 {
+  margin-left: 4rem;
+}
+.forecast .back {
+  border-radius: 12px;
+  border: 3px outset #888;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #eee;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 1);
+  font-size: 10px;
+  font-weight: bolder;
+  text-decoration: none;
+  background: linear-gradient(160deg, #666, #444);
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+  transition: 0.2s;
+}
