@@ -17,13 +17,17 @@ function RandomJoke() {
         const response = await fetch(
           'https://official-joke-api.appspot.com/random_joke',
         );
+        if (!response.ok) {
+          throw Error(`An error has occurred: ${response.status}`);
+        }
         if (response) {
           setLoading(false);
         }
+
         const data = await response.json();
         setJoke(data);
-      } catch (e) {
-        setError(true);
+      } catch (error) {
+        setError(error.message);
       }
     }
     fetchJoke();
@@ -45,7 +49,7 @@ function RandomJoke() {
 function Joke({ error, loading, joke }) {
   return (
     <>
-      {error && <p>Something went wrong</p>}
+      {error && <p>{error}</p>}
       {!error && (
         <>
           {loading && <p>Loading...</p>}

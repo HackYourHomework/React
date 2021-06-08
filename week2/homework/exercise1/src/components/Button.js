@@ -1,10 +1,10 @@
 import React from 'react';
 
-function Button({ GetFriend }) {
+function Button({ getFriend }) {
   return (
     <button
       onClick={() => {
-        GetFriend();
+        getFriend();
       }}
     >
       Get a friend!

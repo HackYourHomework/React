@@ -7,26 +7,27 @@ function Friend() {
   const [isError, setError] = useState();
   const [loading, setLoading] = useState(false);
 
-  async function GetFriend() {
+  async function getFriend() {
     try {
       setFriend('');
       setLoading(true);
       const response = await fetch('https://www.randomuser.me/api?results=1');
-      // if (!response.ok) {
-      //   throw Error(`An error has occurred`);
-      // }
+      if (!response.ok) {
+        throw Error(`An error has occurred: ${response.status}`);
+      }
       const data = await response.json();
       setFriend(data.results[0]);
       setLoading(false);
     } catch (error) {
-      setError('Something went wrong');
+      setError(error.message);
       setLoading(false);
     }
   }
   return (
     <div>
-      {isError && <p>{isError}</p>}
-      {!isError && <Button GetFriend={GetFriend} friend={friend}></Button>}
+      {(isError && <p>{isError}</p>) || (
+        <Button getFriend={getFriend} friend={friend}></Button>
+      )}
       {loading && <p>Loading...</p>}
       {!isError && friend && <FriendProfile friend={friend} />}
     </div>

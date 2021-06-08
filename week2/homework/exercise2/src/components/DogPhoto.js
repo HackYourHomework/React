@@ -11,11 +11,15 @@ function DogPhoto() {
     try {
       setLoading(true);
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
+      if (!response.ok) {
+        throw Error(`An error has occurred: ${response.status}`);
+      }
       const data = await response.json();
+
       setDogPhotos((oldDogPhotos) => [...oldDogPhotos, data.message]);
       setLoading(false);
     } catch (error) {
-      setError('Something went wrong!');
+      setError(error.message);
       setLoading(false);
     }
   }

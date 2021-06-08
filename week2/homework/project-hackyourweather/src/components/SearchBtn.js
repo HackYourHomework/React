@@ -1,12 +1,18 @@
 import React from 'react';
 
 const SearchBtn = ({ fetchCity, inputCity }) => {
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+  console.log(inputCity);
   return (
     <div>
       <button
+        // onSubmit={handleSubmit}
         className="btn"
         type="submit"
-        onClick={() => {
+        onClick={(e) => {
+          handleSubmit(e);
           fetchCity({ inputCity });
         }}
       >

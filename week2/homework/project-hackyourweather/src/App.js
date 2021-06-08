@@ -12,12 +12,13 @@ function App() {
         `http://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       );
       if (!response.ok) {
-        throw Error;
+        throw Error(`An error has occurred: ${response.status}`);
       }
+
       const data = await response.json();
       setCity(data);
     } catch (error) {
-      setError('Something went wrong');
+      setError(error.message);
     }
   }
   return (

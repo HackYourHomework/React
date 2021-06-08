@@ -4,6 +4,7 @@ import SearchBtn from './SearchBtn';
 
 function SearchInput({ fetchCity }) {
   const [inputCity, setInputCity] = useState();
+
   return (
     <div id="input-btn">
       <div className="input">
@@ -19,6 +20,7 @@ function SearchInput({ fetchCity }) {
                 setInputCity(e.target.value);
               }}
               placeholder="Search City"
+              required
             />
           </label>
         </form>
