@@ -13,6 +13,7 @@ const CityBox = ({ cityData }) => {
         width: '500px',
         padding: '20px',
         margin: '0 auto',
+        marginTop: '10px',
       }}
     >
       <City cityData={cityData} />

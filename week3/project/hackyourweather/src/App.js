@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import CityBox from './components/CityBox';
 
 function App() {
-  const [city, setCity] = useState('');
+  const [cities, setCities] = useState([]);
   const [inputCity, setInputCity] = useState();
   const [loading, setLoading] = useState(false);
   const [errorVariable, setError] = useState(false);
@@ -15,13 +15,27 @@ function App() {
         `http://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
       );
       const data = await response.json();
-      setCity(data);
+
+      const currentCity = {
+        id: data.id,
+        name: data.name,
+        country: data.sys.country,
+        weather: data.weather[0].main,
+        description: data.weather[0].description,
+        temp_max: data.main.temp_max,
+        temp_min: data.main.temp_min,
+        lat: data.coord.lat,
+        lon: data.coord.lon,
+      };
+
+      setCities([currentCity, ...cities]);
       setLoading(false);
     } catch (error) {
       setError(`This error ${error} happened.`);
       setLoading(false);
     }
   };
+
   return (
     <div style={{ textAlign: 'center' }}>
       <h1>Weather</h1>
@@ -44,24 +58,11 @@ function App() {
       <hr />
       {loading && <div>Loading...</div>}
       {errorVariable && <div>{errorVariable}</div>}
-      {!errorVariable && city && <CityBox cityData={city} />}
+      {!errorVariable &&
+        cities &&
+        cities.map((city) => <CityBox key={city.id} cityData={city} />)}
     </div>
-    // <div>
-    //   {cityData.map((data) => {
-    //     return (
-    //       <div className="box" key={data.id}>
-    //         <City city={data.name} country={data.sys.country} />
-    //         <Description
-    //           main={data.weather[0].main}
-    //           description={data.weather[0].description}
-    //         />
-    //         <Temperature min={data.main.temp_min} max={data.main.temp_max} />
-    //         <Location lon={data.coord.lon} lat={data.coord.lat} />
-    //       </div>
-    //     );
-    //   })}
-    // </div>
   );
 }
-
+//<CityBox key={city.id} cityData={city} />
 export default App;

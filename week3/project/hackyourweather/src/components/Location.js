@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Location = ({ cityData }) => {
-  const { lon, lat } = cityData.coord;
+  const { lon, lat } = cityData;
   return (
     <div>
       <p>
