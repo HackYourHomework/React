@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+:root {
+  /* dark shades of primary color*/
+  --clr-primary-1: hsl(205, 86%, 17%);
+  --clr-primary-3: hsl(205, 72%, 37%);
+  --clr-primary-8: hsl(205, 86%, 81%);
+  --clr-grey-7: hsl(211, 27%, 70%);
+  --clr-grey-10: hsl(210, 36%, 96%);
+  --clr-purple-dark: rgb(100, 0, 50);
+  --clr-white: #fff;
+  --clr-black: #222;
+  --transition: all 0.3s linear;
+  --radius: 1rem;
+  --margin: 0.5rem;
+  --padding: 0.5rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Poppins;
+  font-size: 1.2rem;
+}
+
+.container {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 30rem;
+  max-height: 50rem;
+  max-width: 60rem;
+  box-shadow: var(--dark-shadow);
+  margin: var(--margin) auto;
+  padding: var(--padding);
+  border: 0.2rem solid var(--clr-purple-dark);
+  border-radius: var(--radius);
+  background-image: linear-gradient(
+    230deg,
+    var(--clr-grey-10),
+    var(--clr-primary-8),
+    var(--clr-grey-7),
+    var(--clr-primary-1)
+  );
+}
+
+h1 {
+  text-align: center;
+  font-family: cursive;
+  font-size: 3rem;
+  color: var(--clr-purple-dark);
+}
+
+.city {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  border: 1px solid var(--clr-primary-3);
+  border-radius: var(--radius);
+  margin: var(--margin);
+  padding: var(--padding);
+  background: var(--clr-grey-10);
+  box-shadow: var(--light-shadow);
+  transition: var(--transition);
+}
+.city-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.city-header i {
+  cursor: pointer;
+  padding: var(--padding);
+  border: 0.1rem solid var(--clr-black);
+  border-radius: var(--radius);
+}
+
+.search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: var(--clr-white);
+  padding: var(--padding);
+  border-radius: var(--radius);
+}
+.search input {
+  font-size: 1.2rem;
+  border: none;
+  appearance: none;
+  outline: none;
+}
+.btn {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border: none;
+  color: var(--clr-white);
+  background: var(--clr-purple-dark);
+  margin: var(--margin);
+  padding: var(--padding);
+  border-radius: var(--radius);
+  box-shadow: var(--light-shadow);
+  transition: var(--transition);
+}
+.forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.9rem;
+}
