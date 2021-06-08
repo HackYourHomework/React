@@ -1,0 +1,76 @@
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-header .title {
+  text-align: center;
+}
+
+.App-header .container {
+  border: 2px solid black;
+  margin: 40px;
+  padding: 0px 50px 0px 50px;
+  color: black;
+  
+}
+.App-header .description {
+  margin: 30px 0px 40px;
+  text-decoration: none;
+}
+
+.App-header .main {
+  font-weight: bold;
+}
+
+.wrapper{
+  display: inline;
+  
+}
+
+.input{
+  width: 550px;
+  height: 40px;
+  border-radius: 15px;
+}
+
+.btn{
+  height: 40px;
+  margin: 10px;
+  border-radius: 5px;
+
+}
+
+.btn-delete{
+  background-color: white;
+  border-radius: 50%;
+  font-size: 25px;
+  float: right;
+  cursor: pointer;
+  
+}
+
+.forecast{
+  font-size: 15px;
+}
+
+.forecast h1{
+  text-align: center;
+}
+
+.forecast p{
+  font-size: 20px;
+  text-align: center;
+}
+
+.btn-back{
+  width: 100px;
+  margin: 0 auto
+}
+
+
+
+
