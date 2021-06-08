@@ -1,0 +1,26 @@
+.app_container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.city_card {
+  border: 3px solid blue;
+  margin-top: 5px;
+}
+
+.searchInput {
+  margin-left: 28%;
+}
+
+.buttonGetCity {
+  margin-left: 39%;
+}
+
+.goBackButton {
+  margin-left: 50%;
+  margin-bottom: 5%;
+}
+.removeCityButton {
+  float: right;
+  margin-right: 3%;
+}
