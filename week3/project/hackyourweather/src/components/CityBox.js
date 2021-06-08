@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '../../node_modules/react-router-dom';
 import City from './City';
 import Location from './Location';
 import Temperature from './Temperature';
@@ -21,6 +22,7 @@ const CityBox = ({ cityData, removeCity }) => {
       <Description cityData={cityData} />
       <Temperature cityData={cityData} />
       <Location cityData={cityData} />
+      <Link to={`/${cityData.id}`}>Show Chart</Link>
     </div>
   );
 };
