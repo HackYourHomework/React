@@ -4,14 +4,16 @@
 }
 
 .city_card {
-  border: 3px solid blue;
-  margin-top: 5px;
+  border: 3px solid black;
+  margin-top: 5%;
 }
 
-.searchInput {
-  margin-left: 28%;
+h1 {
+  text-align: center;
+  color: red;
 }
 
-.buttonGetCity {
-  margin-left: 39%;
+form {
+  margin: 0 auto;
+  text-align: center;
 }

@@ -1,16 +1,16 @@
-import React from "react";
+// import React from "react";
 
-const Button = ({ onClickEvent, disabled }) => {
-  return (
-    <button
-      className="buttonGetCity"
-      type="submit"
-      disabled={disabled}
-      onClick={onClickEvent}
-    >
-      Search City
-    </button>
-  );
-};
+// const Button = ({ onClickEvent, disabled }) => {
+//   return (
+//     <button
+//       className="buttonGetCity"
+//       type="onSubmit"
+//       disabled={disabled}
+//       onClick={onClickEvent}
+//     >
+//       Search{" "}
+//     </button>
+//   );
+// };
 
-export default Button;
+// export default Button;
