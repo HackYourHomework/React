@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-let preventEarlerFetch = false;
+let earlierFetch = false;
 const MY_KEY = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
 
 const Cityinfo = () => {
-  const [searchCity, setSearchCity] = useState("");
+  const [City, setCity] = useState("");
   const [findCity, setFindCity] = useState({});
+  const [userError, setUserError] = useState(false);
 
   let apiError = "";
 
@@ -14,35 +15,41 @@ const Cityinfo = () => {
 
   const handleFindCity = async () => {
     try {
-      if (preventEarlerFetch) {
-        const url = `http://api.openweathermap.org/data/2.5/weather?q=${searchCity}&appid=${MY_KEY}`;
+      if (earlierFetch) {
+        const url = `http://api.openweathermap.org/data/2.5/weather?q=${City}&appid=${MY_KEY}`;
         const res = await fetch(url);
         const data = await res.json();
         setFindCity(data);
+        console.log(res.status);
+        if (res.status === 400 || res.status === 404) {
+          setUserError(true);
+        }
       }
     } catch (err) {
-      apiError = "can't connect to the API";
+      apiError = `can't connect to the API : ${err}`;
     }
   };
 
   const handleSearchCity = (e) => {
-    setSearchCity(e.target.value);
+    setCity(e.target.value);
   };
 
   return (
     <div>
       <h1>Weather</h1>
-      <Search searchCity={searchCity} handleSearchCity={handleSearchCity} />
+      <Search searchCity={City} handleSearchCity={handleSearchCity} />
 
       <button
         onClick={() => {
-          preventEarlerFetch = true;
+          setUserError(false);
+          earlierFetch = true;
           handleFindCity();
         }}
       >
         weather
       </button>
       <p>{apiError}</p>
+      {userError && <p>invalid input</p>}
 
       {findCity.name !== undefined && (
         <div className="city">

@@ -26,7 +26,7 @@ const DogGallery = () => {
       <div>
         {dogPhotos.length !== 0 &&
           dogPhotos.map((dogPhoto) => {
-            return <DogPhoto dogPhoto={dogPhoto} />;
+            return <DogPhoto key={dogPhoto} dogPhoto={dogPhoto} />;
           })}
       </div>
     </div>

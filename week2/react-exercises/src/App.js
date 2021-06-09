@@ -1,6 +1,6 @@
 import "./App.css";
 import DogGallery from "./dogFotoGallery";
-import Friend from "./newFriend";
+import Friend from "./friend";
 import RandomJoke from "./jokeGenerator";
 function App() {
   return (
