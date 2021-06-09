@@ -1,0 +1,19 @@
+.app_container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+.city_card {
+  border: 3px solid black;
+  margin-top: 5%;
+}
+
+h1 {
+  text-align: center;
+  color: red;
+}
+
+form {
+  margin: 0 auto;
+  text-align: center;
+}
