@@ -9,13 +9,9 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  // Link,
-  // Redirect,
-  // useHistory,
-  // useParams,
-  // useLocation,
+  
 } from "react-router-dom";
-//import { FaRegCaretSquareDown } from "react-icons/fa";
+
 
 const PageNotFound = () => {
   return <h2>This page is not found</h2>;
