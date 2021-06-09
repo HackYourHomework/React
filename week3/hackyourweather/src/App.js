@@ -1,16 +1,12 @@
 import "./App.css";
 import React from "react";
 import Main from "./component/Main";
-//import City from "./component/City";
-//import Search from "./component/Search";
-//import { TiWeatherPartlySunny } from "react-icons/ti";
 import Charts from "./component/Charts";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  
-} from "react-router-dom";
+  } from "react-router-dom";
 
 
 const PageNotFound = () => {
