@@ -21,8 +21,7 @@ function MainWeather() {
   );
 }
 
-function City(props) {
-  const { city, country } = props;
+function City({ city, country }) {
   return (
     <h1>
       {city}, {country}
