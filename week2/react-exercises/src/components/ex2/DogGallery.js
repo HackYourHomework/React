@@ -22,7 +22,6 @@ const DogGallery = () => {
       }
     } catch (err) {
       setNotification(err.message);
-      setDogPhotos([...dogPhotos]);
       console.log(err);
     }
   };
