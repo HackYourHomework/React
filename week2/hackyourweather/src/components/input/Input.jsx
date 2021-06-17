@@ -11,7 +11,9 @@ const Input = () => {
 
   const handleError = (message) => setIsError({ error: true, message });
 
-  const showWeather = async () => {
+  const showWeather = async (ev) => {
+    ev.preventDefault();
+
     if (!city) return handleError(`City name cannot be blank!`);
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}
@@ -30,18 +32,14 @@ const Input = () => {
     } catch (err) {
       handleError(`Please enter a valid city name!`);
     } finally {
+      setCity(``);
       setIsLoading(false);
     }
   };
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    setCity(``);
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(ev) => showWeather(ev)}>
         <input
           type="text"
           name="city"
@@ -50,7 +48,7 @@ const Input = () => {
           onChange={(ev) => setCity(ev.target.value)}
         />
 
-        <Button onClick={showWeather} />
+        <Button />
       </form>
 
       {isLoading && <p>Loading...</p>}
