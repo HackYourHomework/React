@@ -1,0 +1,23 @@
+.container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gallery {
+  min-height: 22vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 90%;
+}
+
+img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}

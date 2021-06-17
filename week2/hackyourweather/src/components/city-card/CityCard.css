@@ -1,0 +1,21 @@
+.card {
+  border: 0.1rem solid black;
+  width: 25rem;
+  margin: 1rem auto;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.status_wrapper {
+  margin-bottom: 2rem;
+}
+
+h3,
+h4 {
+  margin: 0;
+}
+
+h4 {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
