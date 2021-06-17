@@ -1,3 +1,9 @@
+.forecast_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .forecast_title {
   background-color: gray;
   padding: 1rem;
@@ -13,6 +19,6 @@
 }
 
 .back_btn {
-  position: absolute;
-  bottom: 3rem;
+  width: 6rem;
+  margin-top: 2rem;
 }

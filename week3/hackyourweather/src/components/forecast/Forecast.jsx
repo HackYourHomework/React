@@ -1,6 +1,6 @@
 import './Forecast.css';
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import {
   AreaChart,
   Area,
@@ -12,7 +12,6 @@ import {
 
 const Forecast = () => {
   const { cityId } = useParams();
-  const history = useHistory();
   const [forecast, setForecast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState({ error: false });
@@ -41,10 +40,8 @@ const Forecast = () => {
     })();
   }, [cityId]);
 
-  const handleClick = () => history.goBack();
-
   return (
-    <div>
+    <div className="forecast_container">
       {isLoading && <p>Loading...</p>}
       {isError && <p>{isError.message}</p>}
       {forecast.length !== 0 && (
@@ -73,10 +70,8 @@ const Forecast = () => {
         <Area type="monotone" dataKey="main.temp" />
       </AreaChart>
 
-      <Link to="/">
-        <button className="back_btn" type="button" onClick={handleClick}>
-          Go Back
-        </button>
+      <Link to="/" className="goto_btn back_btn">
+        Go back
       </Link>
     </div>
   );

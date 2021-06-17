@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from '../button/Button';
 import CardList from '../card-list/CardList';
+
 import './Input.css';
 
 const Input = () => {
@@ -13,10 +14,13 @@ const Input = () => {
 
   const removeCity = (id, data) => {
     const newCityList = weatherData.filter((city) => city.id !== id);
-    data ? setWeatherData([data, ...newCityList]) : setWeatherData(newCityList);
+
+    setWeatherData([...newCityList]);
   };
 
-  const showWeather = async () => {
+  const showWeather = async (ev) => {
+    ev.preventDefault();
+
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}
 `;
 
@@ -24,32 +28,24 @@ const Input = () => {
       setIsLoading(true);
 
       const resp = await fetch(url);
-      if (!resp.ok) throw Error;
+      if (!resp.ok) throw Error(`Something went wrong!`);
       const data = await resp.json();
 
-      setWeatherData([data]);
-
-      setIsError({ error: false });
-
-      const cityAlreadyListed = weatherData.find((city) => city.id === data.id);
-      cityAlreadyListed
-        ? removeCity(cityAlreadyListed.id, data)
-        : setWeatherData([data, ...weatherData]);
+      setWeatherData([
+        data,
+        ...weatherData.filter((city) => city.id !== data.id),
+      ]);
     } catch (err) {
       handleError(`Please enter a valid city name!`);
     } finally {
       setIsLoading(false);
+      setCity(``);
     }
-  };
-
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
-    setCity(``);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(ev) => showWeather(ev)}>
         <input
           type="text"
           name="city"
@@ -58,7 +54,7 @@ const Input = () => {
           onChange={(ev) => setCity(ev.target.value)}
         />
 
-        <Button onClick={showWeather} disabled={!city} />
+        <Button disabled={!city} />
       </form>
 
       {isLoading && <p>Loading...</p>}
