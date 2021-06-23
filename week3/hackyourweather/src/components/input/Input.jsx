@@ -27,6 +27,8 @@ const Input = () => {
     try {
       setIsLoading(true);
 
+      if (isError.error) setIsError({ error: false });
+
       const resp = await fetch(url);
       if (!resp.ok) throw Error(`Something went wrong!`);
       const data = await resp.json();

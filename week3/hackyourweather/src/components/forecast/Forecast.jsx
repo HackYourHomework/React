@@ -43,7 +43,7 @@ const Forecast = () => {
   return (
     <div className="forecast_container">
       {isLoading && <p>Loading...</p>}
-      {isError && <p>{isError.message}</p>}
+      {isError.error && <p>{isError.message}</p>}
       {forecast.length !== 0 && (
         <>
           <h1 className="forecast_title">5 day forecast</h1>
